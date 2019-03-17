@@ -78,28 +78,27 @@ export class DragonEditComponent
 
   onSubmit() {
     this.changedForm = false;
-    if (this.dragonId) {
-      this.dragon.name = this.dragonForm.get('name').value;
-      this.dragon.type = this.dragonForm.get('type').value;
-      this.dragon.histories = this.getHistories();
 
+    const dragon: Dragon = {
+      id: this.dragonId,
+      createdAt: this.dragon.createdAt,
+      name: this.dragonForm.get('name').value,
+      type: this.dragonForm.get('type').value,
+      histories: this.getHistories(),
+    };
+
+    if (this.dragonId) {
       this.serviceSubscription = this.service
-        .updateDragon(this.dragonId, this.dragon)
+        .updateDragon(this.dragonId, dragon)
         .subscribe(() => {
           this.messageService.showSuccessMessage(
-            `Dragão ${this.dragon.name} atualizado com sucesso.`,
+            `Dragão ${dragon.name} atualizado com sucesso.`,
           );
           this.router.navigate(['/']);
         });
     } else {
-      const dragon: Dragon = {
-        id: null,
-        createdAt: new Date(),
-        name: this.dragonForm.get('name').value,
-        type: this.dragonForm.get('type').value,
-        histories: this.getHistories(),
-      };
 
+      dragon.createdAt = new Date();
       this.serviceSubscription = this.service
         .createDragon(dragon)
         .subscribe(() => {

@@ -16,7 +16,7 @@
             <tr>
               <th scope="col">Nome</th>
               <th scope="col">Tipo</th>
-              <th scope="col">Criado em</th>
+              <th scope="col" class="responsive-visibility">Criado em</th>
               <th scope="col">Ações</th>
             </tr>
           </thead>
@@ -28,7 +28,7 @@
                 </a>
               </td>
               <td> {{ dragon.type }} </td>
-              <td> {{ dragon.createdAt | date: 'dd/MM/yyyy HH:mm' }} </td>
+              <td class="responsive-visibility"> {{ dragon.createdAt | date: 'dd/MM/yyyy HH:mm' }} </td>
               <td>
                 <div class="field is-grouped">
                   <p class="control">
