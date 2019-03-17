@@ -1,5 +1,11 @@
 # Sicredi challenge
 
+Aplicação desenvolvida com Angular 7, usando rotas conforme documentação oficial.   
+Pela aplicação ser pequena, optei por não usar lazy load dos módulos.   
+Para validar acesso as rotas protegidas por autenticação foi usado Guards, mais especificamente canActivate.   
+Como feature extra usei canDeactivate, para avisar o usuário que este está saindo de um form que ele alterou alguma coisa.   
+No restante usei tudo nativo e simples que o angular disponibiliza.
+
 ## Libs
 * bulma: framework css
 * ngx-toastr: toastr/feedback messages
