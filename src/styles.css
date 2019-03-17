@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+body,
+html {
+  height: 100%;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(#243b55, #141e30);
+  overflow: hidden !important;
+}
+
+.main-container {
+  padding: 10px 10px 10px;
+  margin: 20px auto 10px;
+  max-height: 95vh;
+  overflow: auto;
+}
+
+.card {
+  max-width: 95% !important;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px #778492;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px #778492;
+}

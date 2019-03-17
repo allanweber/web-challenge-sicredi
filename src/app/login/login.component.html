@@ -1,0 +1,31 @@
+<div class="main-container card">
+  <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" alt="...">
+  <div class="card-body">
+    <div class="alert alert-danger" role="alert" *ngIf="isInvalid">
+      Email ou senha inválidos
+    </div>
+    <form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()">
+
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+          <input type="email" class="input" [ngClass]="{'is-danger': showError('email')}"
+            placeholder="Informe seu email" formControlName="email">
+        </div>
+        <p *ngIf="showError('email')" class="help is-danger">Email Inválido</p>
+      </div>
+
+
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+          <input type="password" class="input" [ngClass]="{'is-danger': showError('password')}"
+            placeholder="Informe a senha" formControlName="password">
+        </div>
+        <p *ngIf="showError('password')" class="help is-danger">Informe a senha</p>
+      </div>
+
+      <button type="submit" class="button is-link" [disabled]="!loginForm.valid">Login</button>
+    </form>
+  </div>
+</div>

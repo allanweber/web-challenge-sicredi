@@ -1,0 +1,50 @@
+<div class="main-container card">
+  <div class="card-body">
+      <div>
+          <h2 class="title is-pulled-left">
+              Dragões
+          </h2>
+
+          <div class="is-pulled-right">
+            <button type="button" class="button is-link" routerLink="/dragons/new">
+              Criar novo dragão
+            </button>
+          </div>
+      </div>
+      <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+          <thead>
+            <tr>
+              <th scope="col">Nome</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Criado em</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let dragon of dragons">
+              <td>
+                  <a [routerLink]="['/dragons/detail', dragon.id]">
+                  {{ dragon.name }}
+                </a>
+              </td>
+              <td> {{ dragon.type }} </td>
+              <td> {{ dragon.createdAt | date: 'dd/MM/yyyy HH:mm' }} </td>
+              <td>
+                <div class="field is-grouped">
+                  <p class="control">
+                    <button type="button" class="button is-info is-small" [routerLink]="['/dragons', dragon.id]">
+                        Editar
+                    </button>
+                  </p>
+                  <p class="control">
+                    <button type="button" class="button is-warning is-small" (click)="remove(dragon)">
+                        Excluir
+                    </button>
+                  </p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+  </div>
+</div>

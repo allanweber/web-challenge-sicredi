@@ -1,0 +1,10 @@
+.card {
+  width: 30rem;
+}
+
+.input[disabled],
+.textarea[disabled] {
+  background-color: white;
+  border: none;
+  color: #403c36;
+}
