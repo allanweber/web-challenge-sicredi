@@ -8,13 +8,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
+import { CookiesService } from './core/cookie.service';
 import { HttpErrorInterceptor } from './core/http-error-interceptor.service';
 import { DragonModule } from './dragon/dragon.module';
 import { LoginModule } from './login/login.module';
-import { AuthGuardService } from './shared/guards/auth-guard.service';
+import { AuthGuard } from './shared/guards/auth.guard';
+import { CanDeactivateGuard } from './shared/guards/can-deactivate.guard';
 import { FeedbackMessageService } from './shared/services/feedback-message.service';
 import { LoginService } from './shared/services/login.service';
-import { CookiesService } from './core/cookie.service';
 registerLocaleData(localePt);
 
 @NgModule({
@@ -31,7 +32,8 @@ registerLocaleData(localePt);
   ],
   providers: [
     LoginService,
-    AuthGuardService,
+    AuthGuard,
+    CanDeactivateGuard,
     FeedbackMessageService,
     CookiesService,
     { provide: LOCALE_ID, useValue: 'pt-BR' },

@@ -5,15 +5,18 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Dragon } from '../models/dragon.model';
 import { Validators, FormBuilder } from '@angular/forms';
 import { FeedbackMessageService } from 'src/app/shared/services/feedback-message.service';
+import { IFormCanDeactivate } from 'src/app/core/iform-candeactivate';
 
 @Component({
   selector: 'app-dragon-edit',
   templateUrl: './dragon-edit.component.html',
   styleUrls: ['./dragon-edit.component.css'],
 })
-export class DragonEditComponent implements OnInit, OnDestroy {
+export class DragonEditComponent
+  implements OnInit, OnDestroy, IFormCanDeactivate {
   private serviceSubscription: Subscription;
   private routeSubscription: Subscription;
+  private changedForm = false;
 
   public dragonId: string;
   public isEditing: boolean;
@@ -74,6 +77,7 @@ export class DragonEditComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    this.changedForm = false;
     if (this.dragonId) {
       this.dragon.name = this.dragonForm.get('name').value;
       this.dragon.type = this.dragonForm.get('type').value;
@@ -137,5 +141,17 @@ export class DragonEditComponent implements OnInit, OnDestroy {
       this.dragonForm.controls[controlName].dirty &&
       this.dragonForm.controls[controlName].hasError('required')
     );
+  }
+
+  onInput() {
+    this.changedForm = true;
+  }
+
+  canDeactivate() {
+    if (this.changedForm) {
+      return confirm('Deseja sair sem salvar as alterações?');
+    }
+
+    return true;
   }
 }

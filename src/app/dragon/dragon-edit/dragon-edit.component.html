@@ -28,7 +28,7 @@
         <label class="label">Nome</label>
         <div class="control">
           <input type="text" class="input" [ngClass]="{'is-danger': showError('name')}"
-            placeholder="Informe o nome do dragão" formControlName="name">
+            placeholder="Informe o nome do dragão" formControlName="name" (input)="onInput()">
         </div>
         <p *ngIf="showError('name')" class="help is-danger">Informe o nome do dragão</p>
       </div>
@@ -37,7 +37,7 @@
         <label class="label">Tipo</label>
         <div class="control">
           <input type="text" class="input" [ngClass]="{'is-danger': showError('type')}"
-            placeholder="Informe o tipo do dragão" formControlName="type">
+            placeholder="Informe o tipo do dragão" formControlName="type" (input)="onInput()">
         </div>
         <p *ngIf="showError('type')" class="help is-danger">Informe o tipo do dragão</p>
       </div>
@@ -46,7 +46,7 @@
           <label class="label">Histórias</label>
           <div class="control">
             <textarea class="textarea" rows="3"
-              [ngClass]="{'is-danger': showError('histories')}"
+              [ngClass]="{'is-danger': showError('histories')}" (input)="onInput()"
               placeholder="Informe as histórias do dragão" formControlName="histories"></textarea>
           </div>
           <p *ngIf="showError('histories')" class="help is-danger">Informe as histórias do dragão</p>

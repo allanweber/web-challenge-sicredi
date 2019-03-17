@@ -29,7 +29,6 @@ export class CookiesService {
     public setCookie(name: string, value: string, expireMinutes: number) {
         const d: Date = new Date();
         d.setTime(d.getTime() + expireMinutes * 60 * 1000);
-        console.log(d);
         const expires = `expires=${d.toUTCString()}`;
         document.cookie = `${name}=${value}; ${expires}`;
     }
