@@ -124,7 +124,7 @@ export class DragonEditComponent
     const separated = histories.split(
       new RegExp('[' + separators.join('') + ']', 'g'),
     );
-    return separated;
+    return separated.filter(item => item !== '');
   }
 
   ngOnDestroy(): void {
