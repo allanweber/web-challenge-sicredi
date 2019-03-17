@@ -26,9 +26,9 @@ registerLocaleData(localePt);
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    AppRoutingModule,
     LoginModule,
     DragonModule,
+    AppRoutingModule
   ],
   providers: [
     LoginService,
